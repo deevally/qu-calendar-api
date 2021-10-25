@@ -1,0 +1,8 @@
+node_modules
+.env
+.env.test
+/build
+/coverage
+/src/tests
+/src/utils/copilot.js
+/src/utils/testFunctions.js
