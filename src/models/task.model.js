@@ -4,7 +4,7 @@ import mongooseUniqueValidator from "mongoose-unique-validator";
 import mongoosePaginate from "mongoose-paginate-v2";
 const { Schema } = mongoose;
 
-const EventSchema = new Schema(
+const TaskSchema = new Schema(
   {
     summary: {
       type: String,
@@ -22,21 +22,28 @@ const EventSchema = new Schema(
         unique: false,
       }
     },
-    eventUrl: {
+    file: {
       type: String,
-      unique: true,
       lowercase: true,
       trim: true,
       index: {
-        unique: true,
+        unique: false,
+      }
+    },
+    eventUrl: {
+      type: String,
+      lowercase: true,
+      trim: true,
+      index: {
+        unique: false,
       },
     },
 
-    start: {
+    startDate: {
       type: Date,
       default: Date.now
     },
-    end: {
+    endDate: {
       type: Date,
       default: Date.now
     },
@@ -45,29 +52,32 @@ const EventSchema = new Schema(
   { timestamps: true }
 );
 
-const validateEvent = (event) => {
+const validateTask = (k) => {
   const schema = Joi.object({
     summary: Joi.string(),
     description: Joi.string(),
     eventUrl: Joi.string(),
-    start: Joi.string(),
-    end: Joi.string()
+    location: Joi.string(),
+    startDate: Joi.string(),
+    endDate: Joi.string(),
+    attendees: Joi.string(),
+    file: Joi.string(),
   });
 
-  return schema.validate(event);
+  return schema.validate(k);
 };
 
 
 
-EventSchema.plugin(mongoosePaginate);
-EventSchema.plugin(mongooseUniqueValidator);
+TaskSchema.plugin(mongoosePaginate);
+TaskSchema.plugin(mongooseUniqueValidator);
 
-EventSchema.set("toObject", { virtuals: true });
-EventSchema.set("toJSON", { virtuals: true });
+TaskSchema.set("toObject", { virtuals: true });
+TaskSchema.set("toJSON", { virtuals: true });
 
-const Event = mongoose.model("Event", EventSchema);
+const Task = mongoose.model("Task", TaskSchema);
 
 module.exports = {
-  Event,
-  validateEvent,
+  Task,
+  validateTask,
 };

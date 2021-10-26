@@ -16,6 +16,7 @@ const StatusMessages = {
   ERROR_INVITE: 'Error inviting user',
   INVITE_SENT: 'Invite sent successfully',
   INVALID_CREDENTIALS: "Invalid credentials",
+  ERROR_UPLOADING_FILE: "Error uploading file",
 };
 
 

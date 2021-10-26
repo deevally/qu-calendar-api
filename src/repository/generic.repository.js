@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Event } from "../models/event.model";
+import { Task } from "../models/task.model";
 /**
  * @description GenericRepository
  * @class GenericRepository
@@ -27,17 +27,19 @@ async function create(Model, options) {
  * @returns {Document} Resolves paginated array of documents.
  */
 
-async function eventsADay() {
+async function tasksToday() {
   try {
     const dayStart = moment.utc().startOf("day"); // set to 12:00 am today
     const dayEnd = moment.utc().endOf("day"); // set to 23:59 pm today
     console.log("day");
 
-    const documents = await Event.find({
+
+    const documents = await Task.find({
       createdAt: {
         $gte: dayStart,
-        $lte: dayEnd,
+        $lt: dayEnd,
       },
+    
     }).exec();
 
     return documents;
@@ -52,16 +54,13 @@ async function eventsADay() {
  * @returns {Document} Resolves paginated array of documents.
  */
 
-async function eventsAWeek() {
+async function tasksADayWeekMonth(dayStart,dayEnd) {
   try {
-    const weekStart = moment().startOf("week"); // set to the first day of this week, 12:00 am
-    const weekEnd = moment().endOf("week"); // set to the last day of this week, 11:59 pm
-    console.log("week");
 
-    const documents = await Event.find({
+    const documents = await Task.find({
       createdAt: {
-        $gte: weekStart,
-        $lte: weekEnd,
+        $gte:new Date(dayStart).toISOString(),
+        $lt: new Date(dayEnd).toISOString(),
       },
     }).exec();
 
@@ -71,29 +70,8 @@ async function eventsAWeek() {
   }
 }
 
-/**
- * @description Fetch all events in a month
- * @param {object} Model
- * @returns {Document} Resolves paginated array of documents.
- */
 
-async function eventsAMonth() {
-  try {
-    const monthStart = moment().startOf("month"); // set to the first of this month, 12:00 am
-    const monthEnd = moment().endOf("month"); // set to the last day of this month, 11:59 pm
-    console.log("month");
-    const documents = await Event.find({
-      createdAt: {
-        $gte: monthStart,
-        $lte: monthEnd,
-      },
-    }).exec();
 
-    return documents;
-  } catch (error) {
-    throw error;
-  }
-}
 
 /**
  * @description Fetch all documents
@@ -159,7 +137,7 @@ export default {
   create,
   update,
   deleteRecord,
-  eventsADay,
-  eventsAWeek,
-  eventsAMonth,
+  tasksToday,
+  tasksADayWeekMonth,
+  GetAllDocs
 };

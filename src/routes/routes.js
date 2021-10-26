@@ -1,6 +1,5 @@
 import { Router } from "express";
-import authRoute from "./auth.route";
-import eventRoute from "./event.route";
+import TaskRoute from "./task.route";
 
 const router = Router();
 
@@ -11,8 +10,7 @@ router.get("/", (req, res) => {
 });
 
 
-router.use("/", authRoute);
-router.use("/", eventRoute);
+router.use("/", TaskRoute);
 
 
 export default router;

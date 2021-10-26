@@ -5,6 +5,8 @@ import connectDB from "./config/database";
 import helmet from "helmet";
 import logger from "morgan";
 import xss from "xss-clean";
+import cookieParser from "cookie-parser";
+import expressFileUpload from "express-fileupload";
 import rateLimit from "express-rate-limit";
 import compression from "compression";
 import hpp from "hpp";
@@ -18,6 +20,8 @@ dotenv.config();
 
 connectDB();
 const app = express();
+
+app.use(cookieParser());
 
 var corsOptions = {
   origin: "http://localhost:5000",
@@ -69,6 +73,9 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+app.use(expressFileUpload());
+
+
 // Parse incoming requests data
 app.use((req, res, next) => {
   express.json()(req, res, (err) => {
@@ -84,7 +91,7 @@ app.use((req, res, next) => {
 });
 
 app.use(express.urlencoded({ extended: true }));
-// base api
+// base api url
 
 app.use("/api/v1", exposeService, routes);
 

@@ -1,11 +1,9 @@
-import EventService from './event.service';
-import AuthenticationService from './authentication.service';
+import TaskService from './task.service';
 
 const service = () => {
 
     return Object.freeze({
-        auth:AuthenticationService,
-        event: EventService,
+        task: TaskService,
     });
 }
 
