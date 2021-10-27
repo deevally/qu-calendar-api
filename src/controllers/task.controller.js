@@ -15,7 +15,6 @@ import { StatusMessages, ResponseCode } from "../utils/constants";
 const AuthUser = asyncHandler(async (req, res, next) => {
   try {
     const authCode = await req.service.task.AuthUser();
-    console.log(authCode);
     res.redirect(authCode);
   } catch (error) {
     next(error);
@@ -35,11 +34,9 @@ const AuthCallback = asyncHandler(async (req, res, next) => {
     // Save the tokens in a cookie
     res.cookie("tokens", tokens);
 
-    // Redirect back to the client side. [http://localhost:3000/] url can be changed to any other url used by the client side. For now i just return the tokens
-    //res.redirect("http://localhost:3000/");
-    return res.status(200).json({
-      tokens: req.cookies.tokens,
-    });
+    // Redirect back to the client side. [http://localhost:3000/] url can be changed to any other url used by the client side. 
+    res.redirect("http://localhost:3000/");
+  
   } catch (error) {
     next(error);
   }
