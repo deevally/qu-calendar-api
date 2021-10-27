@@ -68,7 +68,7 @@ async function TasksToday(limit, page) {
   const tasks = await GenericRepository.tasksToday(options);
   if (Array.isArray(tasks) && tasks.length === 0)
     throw new ErrorResponse(
-      StatusMessages.NO_EVENTS_TODAY,
+      StatusMessages.NO_TASKS_TODAY,
       ResponseCode.NOT_FOUND
     );
 
@@ -88,7 +88,7 @@ async function TasksADayWeekMonth({ dayStart, dayEnd,limit, page }) {
   const event = await GenericRepository.tasksADayWeekMonth(dayStart, dayEnd,pagination);
   if (Array.isArray(event) && event.length === 0)
     throw new ErrorResponse(
-      StatusMessages.NO_EVENTS_PERIOD,
+      StatusMessages.NO_TASKS_PERIOD,
       ResponseCode.NOT_FOUND
     );
 
