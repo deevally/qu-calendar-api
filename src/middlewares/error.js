@@ -1,4 +1,6 @@
-const ErrorResponse = require("../utils/ErrorResponse");
+// const ErrorResponse = require("../utils/ErrorResponse");
+
+import ErrorResponse from "../utils/ErrorResponse";
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;

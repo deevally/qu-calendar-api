@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "calendar-api",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.2"
+  },
   "scripts": {
     "build": "rm -rf build && mkdir build && babel -d ./build ./src -s",
     "start": "node ./build/index.js",
