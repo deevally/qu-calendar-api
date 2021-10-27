@@ -8,7 +8,7 @@ const ResponseCode = {
 };
 const StatusMessages = {
   NO_EVENTS_TODAY:"No events created today",
-  NO_EVENTS_PERIOD:"No events created this PERIOD",
+  NO_EVENTS_PERIOD:"No events created this period",
   ERROR_CREATING_EVENT: 'Error creating event',
   TASK_NOT_FOUND: 'Task not found',
   ERROR_UPDATING_TASK: "Error updating task",
