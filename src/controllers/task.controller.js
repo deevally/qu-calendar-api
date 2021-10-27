@@ -118,7 +118,34 @@ const GetAllTaskstoday = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @description Get all  Task created in a Week
+ * @description Update Task Progress
+ * @returns {boolean} true
+ */
+
+ const UpdateTaskProgress = asyncHandler(async (req, res, next) => {
+   const { status } = req.body;
+
+   const {taskId} = req.params;
+  try {
+
+    const options = {
+      taskId,
+      status,
+    };
+    const result = await req.service.task.UpdateTaskProgress(options);
+
+    if(result === true){
+    return res.status(ResponseCode.OK).json({
+      success: true,
+    });
+  }
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
+ * @description Get all  Task created in a Day, Week, Month. Query with date-range
  * @returns {object} Returns all the  Task
  */
 
@@ -150,4 +177,5 @@ export default {
   AuthUser,
   AuthCallback,
   CreateEvent,
+  UpdateTaskProgress
 };

@@ -14,7 +14,8 @@ const StatusMessages = {
   ERROR_CREATING_EVENT: 'Error creating event',
   USER_ALREADY_INVITED: 'User already invited',
   ERROR_INVITE: 'Error inviting user',
-  INVITE_SENT: 'Invite sent successfully',
+  TASK_NOT_FOUND: 'Task not found',
+  ERROR_UPDATING_TASK: "Error updating task",
   INVALID_CREDENTIALS: "Invalid credentials",
   ERROR_UPLOADING_FILE: "Error uploading file",
 };

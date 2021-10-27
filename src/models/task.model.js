@@ -22,6 +22,14 @@ const TaskSchema = new Schema(
         unique: false,
       }
     },
+    status: {
+      type: String,
+      enum: {
+        values: ["todo", "inprogress", "testing", "done"],
+        message: "Please select correct status",
+      },
+      default: "todo",
+    },
     file: {
       type: String,
       lowercase: true,
@@ -61,7 +69,9 @@ const validateTask = (k) => {
     startDate: Joi.string(),
     endDate: Joi.string(),
     attendees: Joi.string(),
+    status: Joi.string().valid("todo", "inprogress", "testing", "done"),
     file: Joi.string(),
+  
   });
 
   return schema.validate(k);

@@ -3,7 +3,7 @@ import GenericRepository from "../repository/generic.repository";
 import { Task } from "../models/task.model";
 import { StatusMessages, ResponseCode } from "../utils/constants";
 import { google } from "googleapis";
-import AWS from 'aws-sdk';
+import AWS from "aws-sdk";
 
 import {
   GOOGLE_CLIENT_ID,
@@ -12,7 +12,7 @@ import {
   GOOGLE_SCOPES,
   AWS_ACCESS_KEY_ID,
   AWS_SECRET_ACCESS_KEY,
-  BUCKET_NAME
+  BUCKET_NAME,
 } from "../config/config";
 
 //create a new instance of OAuth2Client
@@ -30,7 +30,6 @@ const authCode = oauth2Client.generateAuthUrl({
   scope: scopes,
   prompt: "consent",
 });
-
 
 /**
  * @description Task  Service
@@ -104,13 +103,6 @@ async function CreateTask(options, tokens, fileOptions) {
     location,
   } = options;
 
-  
-//Upload file to S3
-  const s3Upload = await UploadFile(fileOptions);
-  console.log({s3Upload});
-
-
- 
   const eventData = {
     summary,
     description,
@@ -120,17 +112,21 @@ async function CreateTask(options, tokens, fileOptions) {
     location,
   };
 
-//Create Google Event
+  //Create Google Event
   const event = await CreateEvent(eventData, tokens);
+
+  //Upload file to S3
+  const s3Upload = await UploadFile(fileOptions);
+  console.log({ s3Upload });
 
   const taskData = {
     summary,
-    file : s3Upload,
+    file: s3Upload,
     description,
     eventUrl: event.eventUrl,
     startDate,
     endDate,
-    };
+  };
   //Create Task
   const task = await GenericRepository.create(Task, taskData);
 
@@ -140,12 +136,16 @@ async function CreateTask(options, tokens, fileOptions) {
     eventUrl: event.eventUrl,
     file: s3Upload,
     startDate: task.startDate,
-    endDate: task.endDate
-    };
+    endDate: task.endDate,
+  };
 
   return result;
 }
 
+/**
+ * @description Create Event in Google Calendar
+ * @returns {Object} Event
+ */
 async function CreateEvent(eventData, tokens) {
   oauth2Client.setCredentials(tokens);
 
@@ -206,18 +206,21 @@ async function CreateEvent(eventData, tokens) {
   }
 }
 
-async function UploadFile({uploadFile,contentType, fileName}) {
-
+/**
+ * @description Upload file to S3
+ * @returns {Object} S3 url
+ */
+async function UploadFile({ uploadFile, contentType, fileName }) {
   //Create new S3 instance
-  
+
   const s3 = new AWS.S3();
-  // Set the Region 
-AWS.config.update({
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY
-  //region: "us-east-1", //Region
-});
-  
+  // Set the Region
+  AWS.config.update({
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    //region: "us-east-1", //Region
+  });
+
   // Setting up S3 upload parameters
   const params = {
     Bucket: BUCKET_NAME,
@@ -227,9 +230,8 @@ AWS.config.update({
     ACL: "public-read",
   };
 
-
   try {
-      //Uploading files to the bucket
+    //Uploading files to the bucket
 
     const result = await s3.upload(params).promise();
     return result.Location;
@@ -241,6 +243,28 @@ AWS.config.update({
   }
 }
 
+/**
+ * @description Update Task Progress
+ * @returns {Object} Task
+ */
+
+async function UpdateTaskProgress({ taskId, status }) {
+  const task = await GenericRepository.findById(Task, taskId);
+  if (!task)
+    throw new ErrorResponse(
+      StatusMessages.TASK_NOT_FOUND,
+      ResponseCode.NOT_FOUND
+    );
+  const updatedTask = await GenericRepository.update(Task, taskId, { status });
+
+  if (!updatedTask)
+    throw new ErrorResponse(
+      StatusMessages.ERROR_UPDATING_TASK,
+      ResponseCode.BAD_REQUEST
+    );
+  if (updatedTask) return true;
+}
+
 export default {
   TasksToday,
   TasksADayWeekMonth,
@@ -248,5 +272,6 @@ export default {
   CreateEvent,
   AuthUser,
   AuthCallback,
-  UploadFile
+  UploadFile,
+  UpdateTaskProgress,
 };

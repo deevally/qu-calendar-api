@@ -107,7 +107,7 @@ async function update(Model, id, options) {
   try {
     const documents = await Model.findOneAndUpdate({ _id: id }, options, {
       new: true,
-      //runValidators: true,
+      runValidators: true,
     });
     return documents;
   } catch (error) {
@@ -133,11 +133,28 @@ async function deleteRecord(Model, id) {
   }
 }
 
+/**
+ * @description Fetch one document
+ * @param {object} Model
+ * @param {object} query
+ * @param {object} options Query options
+ * @returns {Document} Gets a particular Document
+ */
+
+ async function findById(Model, id) {
+  try {
+    const documents = await Model.findOne({ _id: id }).exec();
+    return documents;
+  } catch (error) {
+    throw error;
+  }
+}
 export default {
   create,
   update,
   deleteRecord,
   tasksToday,
   tasksADayWeekMonth,
-  GetAllDocs
+  GetAllDocs,
+  findById
 };

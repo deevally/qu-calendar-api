@@ -1292,3 +1292,56 @@
 {"label":"qu-calendar","level":"info","message":"Worker 31932 started","timestamp":"2021-10-26T22:41:14.152Z"}
 {"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-26T22:41:14.170Z"}
 {"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-00.xcv12.mongodb.net","timestamp":"2021-10-26T22:41:16.196Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 29024 started","timestamp":"2021-10-27T09:48:13.359Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T09:48:13.380Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T09:48:21.016Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 4268 started","timestamp":"2021-10-27T09:52:57.257Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T09:52:57.280Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-00.xcv12.mongodb.net","timestamp":"2021-10-27T09:53:09.803Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 21320 started","timestamp":"2021-10-27T09:54:02.474Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T09:54:02.513Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-00.xcv12.mongodb.net","timestamp":"2021-10-27T09:54:15.162Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 12952 started","timestamp":"2021-10-27T09:56:53.145Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T09:56:53.182Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T09:56:55.667Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 25444 started","timestamp":"2021-10-27T09:59:40.960Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T09:59:40.991Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 17168 started","timestamp":"2021-10-27T14:16:42.449Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:16:42.471Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 38312 started","timestamp":"2021-10-27T14:16:55.166Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:16:55.201Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-01.xcv12.mongodb.net","timestamp":"2021-10-27T14:16:57.742Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 34084 started","timestamp":"2021-10-27T14:20:22.048Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:20:22.074Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T14:20:24.585Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 18796 started","timestamp":"2021-10-27T14:20:46.111Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:20:46.136Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 24356 started","timestamp":"2021-10-27T14:21:12.434Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:21:12.472Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-01.xcv12.mongodb.net","timestamp":"2021-10-27T14:21:15.227Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 29704 started","timestamp":"2021-10-27T14:21:32.334Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:21:32.355Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-00.xcv12.mongodb.net","timestamp":"2021-10-27T14:21:35.150Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 37232 started","timestamp":"2021-10-27T14:21:51.595Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:21:51.621Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-01.xcv12.mongodb.net","timestamp":"2021-10-27T14:21:54.245Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 39256 started","timestamp":"2021-10-27T14:22:14.626Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:22:14.655Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T14:22:17.047Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 40136 started","timestamp":"2021-10-27T14:22:50.752Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:22:50.789Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T14:22:53.396Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 6912 started","timestamp":"2021-10-27T14:23:50.683Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:23:50.708Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-00.xcv12.mongodb.net","timestamp":"2021-10-27T14:23:53.344Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 40548 started","timestamp":"2021-10-27T14:24:53.390Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:24:53.423Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T14:24:56.063Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 24320 started","timestamp":"2021-10-27T14:39:50.752Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:39:50.755Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-02.xcv12.mongodb.net","timestamp":"2021-10-27T14:39:53.446Z"}
+{"label":"qu-calendar","level":"info","message":"Shutting down DB Server","timestamp":"2021-10-27T14:40:27.670Z"}
+{"label":"qu-calendar","level":"info","message":"Worker 37880 started","timestamp":"2021-10-27T14:42:33.571Z"}
+{"label":"qu-calendar","level":"info","message":"Server started on Port 5000 in development mode.","timestamp":"2021-10-27T14:42:33.574Z"}
+{"label":"qu-calendar","level":"info","message":"Connected to Database running on cluster0-shard-00-01.xcv12.mongodb.net","timestamp":"2021-10-27T14:42:36.433Z"}
+{"label":"qu-calendar","level":"info","message":"Shutting down DB Server","timestamp":"2021-10-27T14:44:20.691Z"}
