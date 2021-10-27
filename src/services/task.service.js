@@ -60,8 +60,12 @@ async function AuthCallback(code) {
  * @description Get Task created in a day
  * @returns {Object} Task
  */
-async function TasksToday() {
-  const tasks = await GenericRepository.tasksToday();
+async function TasksToday(limit, page) {
+  const options = {
+    limit: Number(limit),
+    page: Number(page),
+  };
+  const tasks = await GenericRepository.tasksToday(options);
   if (Array.isArray(tasks) && tasks.length === 0)
     throw new ErrorResponse(
       StatusMessages.NO_EVENTS_TODAY,
@@ -75,8 +79,13 @@ async function TasksToday() {
  * @description Get Task created in a day , week , month
  * @returns {Object} Task
  */
-async function TasksADayWeekMonth({ dayStart, dayEnd }) {
-  const event = await GenericRepository.tasksADayWeekMonth(dayStart, dayEnd);
+async function TasksADayWeekMonth({ dayStart, dayEnd,limit, page }) {
+
+  const pagination = {
+    limit: Number(limit),
+    page: Number(page),
+  }
+  const event = await GenericRepository.tasksADayWeekMonth(dayStart, dayEnd,pagination);
   if (Array.isArray(event) && event.length === 0)
     throw new ErrorResponse(
       StatusMessages.NO_EVENTS_WEEK,
@@ -245,7 +254,7 @@ async function UploadFile({ uploadFile, contentType, fileName }) {
 
 /**
  * @description Update Task Progress
- * @returns {Object} Task
+ * @returns {boolean} true
  */
 
 async function UpdateTaskProgress({ taskId, status }) {
@@ -265,6 +274,22 @@ async function UpdateTaskProgress({ taskId, status }) {
   if (updatedTask) return true;
 }
 
+
+/**
+ * @description Delete Task Service
+ * @returns {boolean} true
+ */
+
+ async function DeleteTask(taskId ) {
+  const task = await GenericRepository.findById(Task, taskId);
+  if (!task)
+    throw new ErrorResponse(
+      StatusMessages.TASK_NOT_FOUND,
+      ResponseCode.NOT_FOUND
+    );
+  const deleteTask = await GenericRepository.deleteRecord(Task, taskId,);
+  if (deleteTask) return true;
+}
 export default {
   TasksToday,
   TasksADayWeekMonth,
@@ -274,4 +299,5 @@ export default {
   AuthCallback,
   UploadFile,
   UpdateTaskProgress,
+  DeleteTask
 };

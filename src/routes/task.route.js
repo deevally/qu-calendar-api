@@ -12,6 +12,6 @@ router.get("/authuser",TaskController.AuthUser);
 router.get("/auth/callback", TaskController.AuthCallback);
 router.post("/create-event", TaskController.CreateEvent);
 router.patch("/update-task/:taskId", TaskController.UpdateTaskProgress);
-
+router.delete("/delete-task/:taskId", TaskController.DeleteTask);
 
 export default router;

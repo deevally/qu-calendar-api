@@ -101,8 +101,12 @@ const CreateEvent = asyncHandler(async (req, res, next) => {
  */
 
 const GetAllTaskstoday = asyncHandler(async (req, res, next) => {
+  const { limit = 10, page = 0 } = req.query;
+
   try {
-    const result = await req.service.task.TasksToday();
+
+    
+    const result = await req.service.task.TasksToday(limit, page);
 
     return res.status(ResponseCode.OK).json({
       success: true,
@@ -141,18 +145,42 @@ const GetAllTaskstoday = asyncHandler(async (req, res, next) => {
   }
 });
 
+
+/**
+ * @description Delete Task
+ * @returns {boolean} true
+ */
+
+ const DeleteTask= asyncHandler(async (req, res, next) => {
+
+  const {taskId} = req.params;
+ try {
+   const result = await req.service.task.DeleteTask(taskId);
+
+   if(result === true){
+   return res.status(ResponseCode.OK).json({
+     success: true,
+   });
+ }
+ } catch (error) {
+   next(error);
+ }
+});
+
 /**
  * @description Get all  Task created in a Day, Week, Month. Query with date-range
  * @returns {object} Returns all the  Task
  */
 
 const GetAllTasksDayWeekMonth = asyncHandler(async (req, res, next) => {
-  const { dayStart, dayEnd } = req.query;
+  const { dayStart, dayEnd, limit = 10, page = 0 } = req.query;
 
   try {
     const options = {
       dayStart,
       dayEnd,
+      page,
+      limit,
     };
 
     const result = await req.service.task.TasksADayWeekMonth(options);
@@ -174,5 +202,6 @@ export default {
   AuthUser,
   AuthCallback,
   CreateEvent,
-  UpdateTaskProgress
+  UpdateTaskProgress,
+  DeleteTask
 };

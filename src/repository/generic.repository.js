@@ -27,20 +27,26 @@ async function create(Model, options) {
  * @returns {Document} Resolves paginated array of documents.
  */
 
-async function tasksToday() {
+async function tasksToday({ limit, page }) {
   try {
     const dayStart = moment.utc().startOf("day"); // set to 12:00 am today
     const dayEnd = moment.utc().endOf("day"); // set to 23:59 pm today
-    console.log("day");
 
-
-    const documents = await Task.find({
-      createdAt: {
-        $gte: dayStart,
-        $lt: dayEnd,
+    const documents = await Task.find(
+      {
+        createdAt: {
+          $gte: dayStart,
+          $lt: dayEnd,
+        },
       },
-    
-    }).exec();
+      null,
+      {
+        skip: page * limit,
+      }
+    )
+      .limit(limit)
+      .sort("-createdAt")
+      .exec();
 
     return documents;
   } catch (error) {
@@ -54,15 +60,23 @@ async function tasksToday() {
  * @returns {Document} Resolves paginated array of documents.
  */
 
-async function tasksADayWeekMonth(dayStart,dayEnd) {
+async function tasksADayWeekMonth(dayStart, dayEnd, { limit, page }) {
   try {
-
-    const documents = await Task.find({
-      createdAt: {
-        $gte:new Date(dayStart).toISOString(),
-        $lt: new Date(dayEnd).toISOString(),
+    const documents = await Task.find(
+      {
+        createdAt: {
+          $gte: new Date(dayStart).toISOString(),
+          $lt: new Date(dayEnd).toISOString(),
+        },
       },
-    }).exec();
+      null,
+      {
+        skip: page * limit,
+      }
+    )
+      .limit(limit)
+      .sort("-createdAt")
+      .exec();
 
     return documents;
   } catch (error) {
@@ -70,8 +84,23 @@ async function tasksADayWeekMonth(dayStart,dayEnd) {
   }
 }
 
+/**
+ * @description deletes a document
+ * @param {object} Model
+ * @param {object} query
+ * @param {object} options Query options
+ * @returns {Document} Deletes a particular Document
+ */
 
+ async function deleteRecord(Model, id) {
+  try {
+    const documents = await Model.findByIdAndRemove({ _id: id });
 
+    return documents;
+  } catch (error) {
+    throw error;
+  }
+}
 
 /**
  * @description Fetch all documents
@@ -89,6 +118,7 @@ async function GetAllDocs(Model, options) {
       .limit(options.limit)
       .sort("-createdAt")
       .exec();
+
     return documents;
   } catch (error) {
     throw error;
@@ -115,23 +145,6 @@ async function update(Model, id, options) {
   }
 }
 
-/**
- * @description deletes a document
- * @param {object} Model
- * @param {object} query
- * @param {object} options Query options
- * @returns {Document} Deletes a particular Document
- */
-
-async function deleteRecord(Model, id) {
-  try {
-    const documents = await Model.findByIdAndRemove({ _id: id });
-
-    return documents;
-  } catch (error) {
-    throw error;
-  }
-}
 
 /**
  * @description Fetch one document
@@ -141,7 +154,7 @@ async function deleteRecord(Model, id) {
  * @returns {Document} Gets a particular Document
  */
 
- async function findById(Model, id) {
+async function findById(Model, id) {
   try {
     const documents = await Model.findOne({ _id: id }).exec();
     return documents;
@@ -156,5 +169,5 @@ export default {
   tasksToday,
   tasksADayWeekMonth,
   GetAllDocs,
-  findById
+  findById,
 };
