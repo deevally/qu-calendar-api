@@ -1,4 +1,4 @@
-import ErrorResponse from "../utils/errorResponse";
+import ErrorResponse from "../utils/error.response";
 
 const validate = (validator) => {
     return (req, res, next) => {
