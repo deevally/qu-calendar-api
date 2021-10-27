@@ -1,4 +1,4 @@
-import ErrorResponse from "../utils/ErrorResponse";
+import ErrorResponse  from "../utils/ErrorResponse";
 import GenericRepository from "../repository/generic.repository";
 import { Task } from "../models/task.model";
 import { StatusMessages, ResponseCode } from "../utils/constants";
