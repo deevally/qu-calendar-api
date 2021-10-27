@@ -8,12 +8,8 @@ const ResponseCode = {
 };
 const StatusMessages = {
   NO_EVENTS_TODAY:"No events created today",
-  NO_EVENTS_WEEK:"No events created this week",
-  NO_EVENTS_MONTH:"No events created this month",
-  EMAIL_NOT_SENT:'Email could not be sent',
+  NO_EVENTS_PERIOD:"No events created this PERIOD",
   ERROR_CREATING_EVENT: 'Error creating event',
-  USER_ALREADY_INVITED: 'User already invited',
-  ERROR_INVITE: 'Error inviting user',
   TASK_NOT_FOUND: 'Task not found',
   ERROR_UPDATING_TASK: "Error updating task",
   INVALID_CREDENTIALS: "Invalid credentials",

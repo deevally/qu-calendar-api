@@ -88,7 +88,7 @@ async function TasksADayWeekMonth({ dayStart, dayEnd,limit, page }) {
   const event = await GenericRepository.tasksADayWeekMonth(dayStart, dayEnd,pagination);
   if (Array.isArray(event) && event.length === 0)
     throw new ErrorResponse(
-      StatusMessages.NO_EVENTS_WEEK,
+      StatusMessages.NO_EVENTS_PERIOD,
       ResponseCode.NOT_FOUND
     );
 
